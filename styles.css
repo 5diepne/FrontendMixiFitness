@@ -5,7 +5,8 @@
     --dark-gray: #2f2f2f;
     --medium-gray: #b6b6b6;
     --white: #ffffff;
-    --max-width: 1366px; /* Dell G15 typical width */
+    --max-width: 1366px;
+    /* Dell G15 typical width */
 }
 
 body {
@@ -27,6 +28,33 @@ body {
 .navbar {
     background-color: #f8f9fa;
     padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Sticky navbar styles */
+.navbar-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.3rem 1rem;
+}
+
+/* Change text color when navbar is sticky */
+.navbar-sticky .nav-link,
+.navbar-sticky .navbar-nav li a,
+.navbar-sticky .navbar-brand,
+.navbar-sticky .auth-buttons .btn {
+    color: var(--white);
+}
+
+.navbar-sticky .nav-link:hover,
+.navbar-sticky .nav-link.active {
+    color: var(--white);
+    border-bottom: 2px solid var(--white);
 }
 
 .navbar .nav-link {
@@ -35,10 +63,10 @@ body {
     padding: 0.5rem 1rem !important;
 }
 
-.navbar .nav-link:hover, 
+.navbar .nav-link:hover,
 .navbar .nav-link.active {
     color: var(--primary-color);
-    border-bottom: 2px solid #000;
+    border-bottom: 1.5px solid #000;
 }
 
 .auth-buttons .btn {
@@ -60,9 +88,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(241, 86, 55, 0.85), rgba(251, 168, 64, 0.85));
+    background-image:
+        linear-gradient(to right, rgba(241, 86, 55, 0.85), rgba(251, 168, 64, 0.85)),
+        url('images/bannerBgr.jpg');
+    background-size: cover;
+    background-position: center;
     z-index: 1;
 }
+
 
 .hero-content {
     position: relative;
@@ -75,9 +108,11 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.logo{
+
+.logo {
     width: 40px;
 }
+
 .search-card {
     background: white;
     border-radius: 10px;
@@ -267,7 +302,7 @@ footer a.text-muted:hover {
     .navbar .navbar-nav {
         margin: 1rem 0;
     }
-    
+
     .carousel-control {
         display: none;
     }
@@ -277,7 +312,7 @@ footer a.text-muted:hover {
     .pricing-card {
         margin-bottom: 2rem;
     }
-    
+
     .hero-content {
         padding: 2rem 0;
     }
