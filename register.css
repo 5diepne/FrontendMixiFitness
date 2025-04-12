@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1920px;
+    /* Optimized for Dell G15 laptop */
+    margin: 0 auto;
+}
+
+.image-section {
+    flex: 1;
+    background-image: url('images/registerImg.png');
+    background-size: cover;
+    background-position: left center;
+    position: relative;
+}
+
+.form-section {
+    flex: 1;
+    background: linear-gradient(135deg, #f15637 0%, #FBA840 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    color: #f15637;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    color: #555;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #e6e8ec;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0d72c1;
+    box-shadow: 0 0 0 2px rgba(13, 114, 193, 0.1);
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    margin: 1.5rem 0;
+}
+
+.form-check-input {
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+}
+
+.terms-link {
+    color: #3772ff;
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+.btn-signup {
+    width: 100%;
+    background: linear-gradient(to right, #f15637, #FBA840);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.btn-signup:hover {
+    opacity: 0.9;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.back-link {
+    color: #f15637;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-section {
+        height: 30vh;
+    }
+
+    .form-section {
+        padding: 1.5rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+}
