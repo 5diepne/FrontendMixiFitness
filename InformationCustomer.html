@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Account Information</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/infoCustomer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    
+  <div class="container">
+    <div class="breadcrumb">Home / Personal Information</div>
+
+    <div class="account-header">
+      <div class="header-left">
+        <div class="avatar-wrapper">
+          <img src="https://anhdep.edu.vn/upload/2024/08/avatar-an-danh-8211-chon-hinh-anh-phu-hop-de-giu-an-toan-56.webp" alt="Avatar" class="avatar" />
+          <span class="lock-icon" id="folderOpener">📷</span>
+        </div>
+        <div class="header-text">
+          <h2>Account Information</h2>
+          <p>You can edit your personal information here</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showForm('infoForm', this)">Personal Information</button>
+      <button class="tab" onclick="showForm('passwordForm', this)">Change Password</button>
+      <button class="tab" onclick="showForm('historyForm', this)">Invoice Registration History</button>
+    </div>
+
+    <!-- Personal Information -->
+    <form id="infoForm" class="form active">
+      <div class="form-group">
+        <label>Student Name *</label>
+        <input type="text" placeholder="Jamie Jamie" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" value="jamie032003@gmail.com" disabled>
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth *</label>
+        <input type="date" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" placeholder="Enter phone number" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender *</label>
+        <select required>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Country *</label>
+        <select>
+          <option>Vietnam</option>
+          <option>Japan</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Level</label>
+        <select>
+          <option>N5</option>
+          <option>N4</option>
+          <option>N3</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" placeholder="Enter City/Province, District, Ward">
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" class="save-btn">Save Information</button>
+      </div>
+    </form>
+
+    <!-- Change Password -->
+    <form id="passwordForm" class="form">
+        <div class="form-group password-group">
+          <label>Current Password <span style="color:red">*</span></label>
+          <div class="password-input-wrapper">
+            <span class="icon">🔒</span>
+            <input type="password" placeholder="Enter password here" required>
+            <span class="eye-icon" onclick="togglePassword(this)" data-visible="false">👁️</span>
+          </div>
+        </div>
+      
+        <div class="form-group password-group">
+          <label>New Password <span style="color:red">*</span></label>
+          <div class="password-input-wrapper">
+            <span class="icon">🔒</span>
+            <input type="password" placeholder="Enter password here" required>
+            <span class="eye-icon" onclick="togglePassword(this)" data-visible="false">👁️</span>
+          </div>
+        </div>
+      
+        <div class="form-group password-group">
+          <label>Confirm New Password <span style="color:red">*</span></label>
+          <div class="password-input-wrapper">
+            <span class="icon">🔒</span>
+            <input type="password" placeholder="Enter password here" required>
+            <span class="eye-icon" onclick="togglePassword(this)" data-visible="false">👁️</span>
+          </div>
+        </div>
+      
+        <div class="form-buttons">
+          <button type="submit" class="save-btn">Save Information</button>
+        </div>
+    </form>
+
+    <!-- Invoice Registration History -->
+    <form id="historyForm" class="form">
+        <div class="streak-card">
+            <div class="streak-header">
+              <div>
+                <div class="streak-count history-item">3</div>
+                <div class="streak-label history-item">months registered</div>
+              </div>
+              <div class="flower-icon"><i class="history-item fas fa-dumbbell"></i></div>
+            </div>
+          
+            <div class="streak-months">
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Jan</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Feb</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Mar</div></div>
+              <div class="month"><div class="flower active123">✔</div><div class="label highlight123">Apr</div></div>
+              <div class="month"><div class="flower active123">✔</div><div class="label highlight123">May</div></div>
+              <div class="month"><div class="flower active123">✔</div><div class="label highlight123">Jun</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Jul</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Aug</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Sep</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Oct</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Nov</div></div>
+              <div class="month"><div class="flower faded"><i class="fas fa-dumbbell" style="color: #f44336;"></i></div><div class="label">Dec</div></div>
+            </div>
+
+            <div>
+                <h2 class="history-item">Invoice Registration History</h2>
+                <div class="history-item">✔ Invoice registration April - 2025</div>
+                <div class="history-item">✔ Invoice registration May - 2024</div>
+                <div class="history-item">✔ Invoice registration June - 2024</div>
+              </div>
+          </div>
+    </form>
+  </div>
+
+  <script>
+    function showForm(formId, tabBtn) {
+      document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
+      document.getElementById(formId).classList.add('active');
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tabBtn.classList.add('active');
+    }
+    
+    function togglePassword(icon) {     
+      const input = icon.previousElementSibling;
+      const isVisible = icon.getAttribute("data-visible") === "true";
+
+      input.type = isVisible ? "password" : "text";
+      icon.textContent = isVisible ? "👁️" : "🙈";
+      icon.setAttribute("data-visible", !isVisible);
+    }
+
+    // Call API for open folder images
+    // document.getElementById('folderOpener').addEventListener('click', () => {
+    //   fetch('/api/open-folder', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ folderPath: 'your/folder/path' })
+    //   })
+    //   .then(response => response.json())
+    //   .then(data => console.log(data));
+    // });
+  </script>
+</body>
+</html>
