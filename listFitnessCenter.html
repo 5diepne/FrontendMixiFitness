@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Search</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .search-section {   
+            background-image:
+        linear-gradient(to right, rgba(241, 86, 55, 0.85), rgba(251, 168, 64, 0.85)),
+        url('images/bannerBgr.jpg');
+            padding: 30px 20px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin: 0 0 20px 0;
+            color: white;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .search-field {
+            margin-bottom: 10px;
+        }
+        
+        .search-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        .search-field input, 
+        .search-field select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+        }
+        
+        .search-button {
+            grid-column: 1 / -1;
+            background-color: #ff7043;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .search-button:hover {
+            background-color: #ff5722;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+      margin-bottom: 20px;
+      padding: 15px;
+      gap: 20px;
+    }
+
+    .card img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-header h2 {
+      color: #FF5722;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 16px;
+    }
+
+    .info {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .info a {
+      color: #333;
+      text-decoration: underline;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .footer .icons {
+      display: flex;
+      gap: 15px;
+      color: #FF5722;
+      font-size: 14px;
+      align-items: center;
+    }
+
+    .footer .detail-button {
+      background-color: #FF5722;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .footer .detail-button:hover {
+      background-color: #d7372b;
+    }
+        
+    .pagination {
+      display: flex;
+      gap: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #e8eaf1;
+      color: #1a1736;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .page-number.active {
+      background-color: #FF5722;
+      color: white;
+    }
+
+    .page-number:hover {
+      background-color: #d7372b;
+      color: white;
+    }
+        @media (max-width: 600px) {
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-section">
+            <div class="search-container">
+                <h1>Search for gyms, yoga studios, fitness centers</h1>
+                
+                <form class="search-form">
+                    <div class="search-field">
+                        <label for="location">Location (e.g., HCMC, Ha Noi)</label>
+                        <input type="text" id="location" placeholder="Enter location">
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="service-type">Select Service Type</label>
+                        <select id="service-type">
+                            <option value="">All Services</option>
+                            <option value="gym">Gym</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="fitness">Fitness Center</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="price-range">Select Price Range</label>
+                        <select id="price-range">
+                            <option value="">Any Price</option>
+                            <option value="low">$ - Low</option>
+                            <option value="medium">$$ - Medium</option>
+                            <option value="high">$$$ - High</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="rating">Select Star Rating</label>
+                        <select id="rating">
+                            <option value="">Any Rating</option>
+                            <option value="5">★★★★★</option>
+                            <option value="4">★★★★☆</option>
+                            <option value="3">★★★☆☆</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card">
+            <img src="https://mpos.vn/public/news/ba5c020d-cdb9-419a-a29d-1d96a2e45b28_800x500_3%20(4).png" alt="City Gym">
+            <div class="card-content">
+              <div>
+                <div class="card-header">
+                  <h2>The City Gym – Danang Gym</h2>
+                  <div class="stars">
+                    ★ ★ ★ ★ ★
+                  </div>
+                </div>
+                <div class="info">
+                  <strong>Contact information:</strong><br>
+                  • Address: <a href="#">512–514 Nguyen Tri Phuong, Hai Chau, Da Nang</a><br>
+                  • Hotline: 0905507019<br>
+                  • Opening hours: 5:00 – 20:30 (Mon–Sat), 14:00 – 19:00 (Sun)<br>
+                  • Website: <a href="https://www.thecitygym.vn/">https://www.thecitygym.vn/</a>
+                </div>
+              </div>
+              <div class="footer">
+                <!-- <div class="icons">
+                  <span><i class="fas fa-calendar-days"></i> 05</span>
+                  <span><i class="fas fa-clock"></i> 11h 20m</span>
+                  <span><i class="fas fa-comment"></i> 22</span>
+                </div> -->
+                <button class="detail-button">Detail</button>
+              </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://mpos.vn/public/news/ba5c020d-cdb9-419a-a29d-1d96a2e45b28_800x500_3%20(4).png" alt="City Gym">
+            <div class="card-content">
+              <div>
+                <div class="card-header">
+                  <h2>The City Gym – Danang Gym</h2>
+                  <div class="stars">
+                    ★ ★ ★ ★ ★
+                  </div>
+                </div>
+                <div class="info">
+                  <strong>Contact information:</strong><br>
+                  • Address: <a href="#">512–514 Nguyen Tri Phuong, Hai Chau, Da Nang</a><br>
+                  • Hotline: 0905507019<br>
+                  • Opening hours: 5:00 – 20:30 (Mon–Sat), 14:00 – 19:00 (Sun)<br>
+                  • Website: <a href="https://www.thecitygym.vn/">https://www.thecitygym.vn/</a>
+                </div>
+              </div>
+              <div class="footer">
+                <!-- <div class="icons">
+                  <span><i class="fas fa-calendar-days"></i> 05</span>
+                  <span><i class="fas fa-clock"></i> 11h 20m</span>
+                  <span><i class="fas fa-comment"></i> 22</span>
+                </div> -->
+                <button class="detail-button">Detail</button>
+              </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://mpos.vn/public/news/ba5c020d-cdb9-419a-a29d-1d96a2e45b28_800x500_3%20(4).png" alt="City Gym">
+            <div class="card-content">
+              <div>
+                <div class="card-header">
+                  <h2>The City Gym – Danang Gym</h2>
+                  <div class="stars">
+                    ★ ★ ★ ★ ★
+                  </div>
+                </div>
+                <div class="info">
+                  <strong>Contact information:</strong><br>
+                  • Address: <a href="#">512–514 Nguyen Tri Phuong, Hai Chau, Da Nang</a><br>
+                  • Hotline: 0905507019<br>
+                  • Opening hours: 5:00 – 20:30 (Mon–Sat), 14:00 – 19:00 (Sun)<br>
+                  • Website: <a href="https://www.thecitygym.vn/">https://www.thecitygym.vn/</a>
+                </div>
+              </div>
+              <div class="footer">
+                <!-- <div class="icons">
+                  <span><i class="fas fa-calendar-days"></i> 05</span>
+                  <span><i class="fas fa-clock"></i> 11h 20m</span>
+                  <span><i class="fas fa-comment"></i> 22</span>
+                </div> -->
+                <button class="detail-button">Detail</button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <div class="page-number active">1</div>
+        <div class="page-number">2</div>
+        <div class="page-number">3</div>
+        <div class="page-number">4</div>
+      </div>
+</body>
+</html>
