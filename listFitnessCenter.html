@@ -72,12 +72,8 @@
                 </div>
               </div>
               <div class="footer">
-                <!-- <div class="icons">
-                  <span><i class="fas fa-calendar-days"></i> 05</span>
-                  <span><i class="fas fa-clock"></i> 11h 20m</span>
-                  <span><i class="fas fa-comment"></i> 22</span>
-                </div> -->
-                <button class="detail-button">Detail</button>
+                <button class="detail-button" onclick="openTrialPopup()">Đăng kí tập</button>
+                <a href="detailFitness.html"><button class="detail-button">Detail</button></a>
               </div>
             </div>
         </div>
@@ -100,12 +96,8 @@
                 </div>
               </div>
               <div class="footer">
-                <!-- <div class="icons">
-                  <span><i class="fas fa-calendar-days"></i> 05</span>
-                  <span><i class="fas fa-clock"></i> 11h 20m</span>
-                  <span><i class="fas fa-comment"></i> 22</span>
-                </div> -->
-                <button class="detail-button">Detail</button>
+                <button class="detail-button" onclick="openTrialPopup()">Đăng kí tập</button>
+                <a href="detailFitness.html"><button class="detail-button">Detail</button></a>
               </div>
             </div>
         </div>
@@ -128,12 +120,8 @@
                 </div>
               </div>
               <div class="footer">
-                <!-- <div class="icons">
-                  <span><i class="fas fa-calendar-days"></i> 05</span>
-                  <span><i class="fas fa-clock"></i> 11h 20m</span>
-                  <span><i class="fas fa-comment"></i> 22</span>
-                </div> -->
-                <button class="detail-button">Detail</button>
+                <button class="detail-button" onclick="openTrialPopup()">Đăng kí tập</button>
+                <a href="detailFitness.html"><button class="detail-button">Detail</button></a>
               </div>
             </div>
         </div>
@@ -145,5 +133,71 @@
         <div class="page-number">3</div>
         <div class="page-number">4</div>
       </div>
+
+
+<!-- Popup Đăng ký Tập Thử -->
+<div id="trialPopup" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <button class="close-btn" onclick="closeTrialPopup()">×</button>
+    <div class="popup-left">
+      <h2>ĐĂNG KÝ TẬP THỬ</h2>
+      <p>
+        Bạn muốn tập luyện tại hệ thống phòng Gym bậc nhất Đà Nẵng? Bạn mong muốn trải nghiệm dịch vụ đẳng cấp cùng những lớp học đa dạng? 
+        Chần chờ gì nữa hãy đến The City Gym In Da Nang City và đăng ký tập thử ngay nào!
+      </p>
+    </div>
+    <div class="popup-right">
+      <form id="trialForm">
+        <label>Họ & Tên<span>*</span></label>
+        <input type="text" name="name" placeholder="Name" required />
+
+        <label>Số điện thoại<span>*</span></label>
+        <input type="tel" name="phone" placeholder="Phone number" required />
+
+        <label>Email<span>*</span></label>
+        <input type="email" name="email" placeholder="Email" required />
+        <label>Cơ sở<span>*</span></label>
+        <select name="location" required>
+          <option value="" disabled selected>Chọn cơ sở</option>
+          <option value="nguyen_tri_phuong">512-514 Nguyễn Tri Phương, Hải Châu</option>
+          <option value="tran_phu">123 Trần Phú, Sơn Trà</option>
+          <option value="le_duan">456 Lê Duẩn, Thanh Khê</option>
+          <option value="vo_van_kiet">789 Võ Văn Kiệt, Liên Chiểu</option>
+        </select>
+
+        <button type="submit" class="submit-btn">ĐĂNG KÝ NGAY</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function openTrialPopup() {
+    document.getElementById("trialPopup").style.display = "flex";
+    document.body.style.overflow = "hidden"; // Ngăn cuộn khi popup mở
+  }
+
+  function closeTrialPopup() {
+    document.getElementById("trialPopup").style.display = "none";
+    document.body.style.overflow = ""; // Cho phép cuộn lại
+  }
+
+  document.getElementById("trialForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Đăng ký thành công!");
+    closeTrialPopup();
+  });
+
+  // Đóng popup khi click ra ngoài phần form
+  const popupOverlay = document.getElementById("trialPopup");
+  popupOverlay.addEventListener("click", function (e) {
+    if (e.target === popupOverlay) {
+      closeTrialPopup();
+    }
+  });
+</script>
+
+
 </body>
 </html>
