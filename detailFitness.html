@@ -20,16 +20,57 @@
         <span class="badge">Open 24/7</span>
         <h2 class="gym-title">The City Gym In Da Nang City</h2>
         <p class="gym-info">512–514 Nguyen Tri Phuong, Hai Chau<br />Da Nang City, AL 50000</p>
-        <p class="gym-info">09055079195<br /><a href="#" class="contact-link">Contact Us</a></p>
         <div class="button-group">
-          <button class="primary-button">Try Us Free</button>
-          <button class="secondary-button">Try Us Free</button>
+          <button class="primary-button" onclick="openTrialPopup()">Đăng kí tập</button>
         </div>
       </div>
       <div>
         <img src="https://mpos.vn/public/news/ba5c020d-cdb9-419a-a29d-1d96a2e45b28_800x500_3%20(4).png" alt="Citigym" class="gym-image" />
       </div>
     </div>
+  </section>
+
+  <section>
+    <!-- Banner -->
+
+  <!-- Tiêu đề -->
+  <h2 class="main-title">Dịch vụ</h2>
+
+  <!-- Danh sách dịch vụ -->
+  <div class="service-grid">
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Aerobic" />
+      <div class="service-label">Aerobic</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Boxing" />
+      <div class="service-label">Boxing</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Cycling" />
+      <div class="service-label">Cycling</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Fitness" />
+      <div class="service-label">Fitness</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Functional" />
+      <div class="service-label">Functional</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Group X" />
+      <div class="service-label">Group X</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Tiktok Dance" />
+      <div class="service-label">Tiktok Dance</div>
+    </div>
+    <div class="service-item">
+      <img src="https://product.hstatic.net/200000644951/product/z5297718370183_332287e85c97fdd6ff19cf666a5f2320_ebec2cc9a0ed42cebcf40169c6706e50_grande.jpg" alt="Yoga" />
+      <div class="service-label">Yoga</div>
+    </div>
+  </div>
   </section>
 
   <!-- Coaching Section -->
@@ -358,9 +399,69 @@
     </div>
   </section>
   
+  <!-- Popup Đăng ký Tập Thử -->
+<div id="trialPopup" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <button class="close-btn" onclick="closeTrialPopup()">×</button>
+    <div class="popup-left">
+      <h2>ĐĂNG KÝ TẬP THỬ</h2>
+      <p>
+        Bạn muốn tập luyện tại hệ thống phòng Gym bậc nhất Đà Nẵng? Bạn mong muốn trải nghiệm dịch vụ đẳng cấp cùng những lớp học đa dạng? 
+        Chần chờ gì nữa hãy đến The City Gym In Da Nang City và đăng ký tập thử ngay nào!
+      </p>
+    </div>
+    <div class="popup-right">
+      <form id="trialForm">
+        <label>Họ & Tên<span>*</span></label>
+        <input type="text" name="name" placeholder="Name" required />
+
+        <label>Số điện thoại<span>*</span></label>
+        <input type="tel" name="phone" placeholder="Phone number" required />
+
+        <label>Email<span>*</span></label>
+        <input type="email" name="email" placeholder="Email" required />
+
+        <label>Cơ sở<span>*</span></label>
+        <select name="location" required>
+          <option value="" disabled selected>Chọn cơ sở</option>
+          <option value="nguyen_tri_phuong">512-514 Nguyễn Tri Phương, Hải Châu</option>
+          <option value="tran_phu">123 Trần Phú, Sơn Trà</option>
+          <option value="le_duan">456 Lê Duẩn, Thanh Khê</option>
+          <option value="vo_van_kiet">789 Võ Văn Kiệt, Liên Chiểu</option>
+        </select>
+
+        <button type="submit" class="submit-btn">ĐĂNG KÝ NGAY</button>
+      </form>
+    </div>
+  </div>
+</div>
   <!-- SwiperJS Script -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
+function openTrialPopup() {
+    document.getElementById("trialPopup").style.display = "flex";
+    document.body.style.overflow = "hidden"; // Ngăn cuộn khi popup mở
+  }
+
+  function closeTrialPopup() {
+    document.getElementById("trialPopup").style.display = "none";
+    document.body.style.overflow = ""; // Cho phép cuộn lại
+  }
+
+  document.getElementById("trialForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Đăng ký thành công!");
+    closeTrialPopup();
+  });
+
+  // Đóng popup khi click ra ngoài phần form
+  const popupOverlay = document.getElementById("trialPopup");
+  popupOverlay.addEventListener("click", function (e) {
+    if (e.target === popupOverlay) {
+      closeTrialPopup();
+    }
+  });
+
     const swiper = new Swiper(".swiper", {
       slidesPerView: 1,
       spaceBetween: 20,
