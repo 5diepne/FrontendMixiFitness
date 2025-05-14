@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Khuyến mãi phòng tập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fefefe;
+        margin: 0;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: rgba(241, 86, 55, 0.85);
+        margin-bottom: 30px;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .tab-btn {
+        padding: 10px 20px;
+        margin: 0 10px;
+        background: #f0f0f0;
+        border: none;
+        border-radius: 999px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(241, 86, 55, 0.85),
+          rgba(251, 168, 64, 0.85)
+        );
+        color: white;
+      }
+
+      .event-list {
+        display: none;
+      }
+
+      .event-list.active {
+        display: block;
+      }
+
+      .event {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .event:last-child {
+        border-bottom: none;
+      }
+
+      .event h3 {
+        margin: 0;
+        color: rgba(251, 168, 64, 0.85);
+      }
+
+      .event p {
+        margin: 5px 0;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sự kiện giảm giá</h1>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('week')">Tuần</button>
+        <button class="tab-btn" onclick="showTab('month')">Tháng</button>
+        <button class="tab-btn" onclick="showTab('year')">Năm</button>
+      </div>
+
+      <!-- Danh sách sự kiện theo tuần -->
+      <div id="week" class="event-list active">
+        <div class="event">
+          <h3>🎉 Giảm 20% tại GymZone</h3>
+          <p>Chỉ trong tuần này từ 13/5 - 19/5!</p>
+        </div>
+        <div class="event">
+          <h3>🔥 Mua 1 tháng tặng 1 tuần tại FitStrong</h3>
+          <p>Áp dụng cho khách mới đăng ký trong tuần.</p>
+        </div>
+      </div>
+
+      <!-- Danh sách sự kiện theo tháng -->
+      <div id="month" class="event-list">
+        <div class="event">
+          <h3>🏋️‍♀️ Tháng 5 rực lửa - Giảm 30% tại BodyMax</h3>
+          <p>Chương trình kéo dài từ 1/5 đến 31/5.</p>
+        </div>
+      </div>
+
+      <!-- Danh sách sự kiện theo năm -->
+      <div id="year" class="event-list">
+        <div class="event">
+          <h3>💥 Ưu đãi thành viên trọn năm tại PowerGym</h3>
+          <p>Đăng ký gói 12 tháng - Giảm 15% toàn bộ chi phí.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showTab(tabId) {
+        // Ẩn tất cả danh sách
+        document
+          .querySelectorAll(".event-list")
+          .forEach((el) => el.classList.remove("active"));
+        // Gỡ active tab
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        // Kích hoạt tab được chọn
+        document.getElementById(tabId).classList.add("active");
+        event.target.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
