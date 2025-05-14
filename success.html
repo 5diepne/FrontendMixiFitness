@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registration Successful</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fdfdfd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+      }
+
+      .success-box {
+        background: white;
+        border-radius: 12px;
+        max-width: 600px;
+        width: 100%;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .success-box h1 {
+        color: rgba(241, 86, 55, 0.85);
+        margin-bottom: 20px;
+      }
+
+      .info {
+        text-align: left;
+        margin: 20px auto;
+        font-size: 16px;
+      }
+
+      .info div {
+        margin-bottom: 10px;
+      }
+
+      .confirmation {
+        margin-top: 20px;
+        background: rgba(251, 168, 64, 0.15);
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgba(241, 86, 55, 0.85);
+      }
+
+      .btn-home {
+        margin-top: 30px;
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(
+          90deg,
+          rgba(241, 86, 55, 0.85),
+          rgba(251, 168, 64, 0.85)
+        );
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+
+      .btn-home:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="success-box">
+      <h1>Registration Successful 🎉</h1>
+      <p>Thank you for registering. Your payment has been received.</p>
+
+      <div class="info" id="user-info">
+        <!-- JavaScript will fill this -->
+      </div>
+
+      <div class="confirmation" id="confirmation-code">
+        <!-- Code here -->
+      </div>
+
+      <a href="/" class="btn-home">Back to Homepage</a>
+      <a id="review-btn" class="btn-home" href="#">Review this Gym</a>
+    </div>
+
+    <script>
+      // Get parameters from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get("name") || "Unknown";
+      const email = urlParams.get("email") || "Unknown";
+      const phone = urlParams.get("phone") || "Unknown";
+      const gym = urlParams.get("gym") || "No Gym Selected";
+      const code = urlParams.get("code") || "N/A";
+
+      document.getElementById("user-info").innerHTML = `
+    <div><strong>Full Name:</strong> ${name}</div>
+    <div><strong>Email:</strong> ${email}</div>
+    <div><strong>Phone:</strong> ${phone}</div>
+    <div><strong>Gym:</strong> ${gym}</div>
+  `;
+
+      document.getElementById(
+        "review-btn"
+      ).href = `review.html?code=${code}&gym=${encodeURIComponent(gym)}`;
+    </script>
+  </body>
+</html>

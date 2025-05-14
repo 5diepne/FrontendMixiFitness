@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Review Gym</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px 20px;
+        background: #fefefe;
+        text-align: center;
+      }
+
+      .review-box {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: rgba(241, 86, 55, 0.85);
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 120px;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        resize: none;
+        font-size: 15px;
+      }
+
+      .submit-btn {
+        margin-top: 20px;
+        padding: 12px 26px;
+        background: linear-gradient(
+          90deg,
+          rgba(241, 86, 55, 0.85),
+          rgba(251, 168, 64, 0.85)
+        );
+        color: white;
+        border: none;
+        border-radius: 999px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(251, 168, 64, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        opacity: 0.92;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(251, 168, 64, 0.4);
+      }
+
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+
+      .success-msg {
+        margin-top: 15px;
+        color: green;
+      }
+      .btn-home {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 26px;
+        background: linear-gradient(
+          90deg,
+          rgba(241, 86, 55, 0.85),
+          rgba(251, 168, 64, 0.85)
+        );
+        border-radius: 999px;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(251, 168, 64, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .btn-home:hover {
+        opacity: 0.92;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(251, 168, 64, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="review-box">
+      <h1>Review Gym</h1>
+      <div id="review-section">
+        <!-- Review form will appear here -->
+      </div>
+      <a href="/" class="btn-home">Back to Homepage</a>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+      const gym = params.get("gym") || "this gym";
+
+      if (code) {
+        document.getElementById("review-section").innerHTML = `
+        <p>Thank you for registering with <b>${gym}</b>! Please leave your review below:</p>
+        <textarea id="review-text" placeholder="Write your feedback..."></textarea><br/>
+        <button class="submit-btn" onclick="submitReview()">Submit Review</button>
+        <p class="success-msg" id="success-msg"></p>
+      `;
+      } else {
+        document.getElementById("review-section").innerHTML = `
+        <p class="error">⚠ You must register before leaving a review.</p>
+      `;
+      }
+
+      function submitReview() {
+        const text = document.getElementById("review-text").value.trim();
+        if (!text) {
+          alert("Please enter your review.");
+          return;
+        }
+        // Giả lập gửi đánh giá thành công
+        document.getElementById("success-msg").textContent =
+          "✅ Thank you! Your review has been submitted.";
+        document.getElementById("review-text").value = "";
+      }
+    </script>
+  </body>
+</html>
